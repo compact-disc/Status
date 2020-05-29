@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="css/index.css">
+	<link rel="stylesheet" type="text/css" href="css/header.css">
+	<link rel="stylesheet" type="text/css" href="css/footer.css">
+	<title>status.cdero.com</title>
+<header id=mainHeader>
+	<div class="headDiv">
+		<h2 id=mainHeaderName>status.cdero.com</h2>
+		<!-- Menu Items, Currently not in use
+			<ul class="menuList">
+				<li class="headerMenuItem"><a class="headerMenuItemClass" href="index.html">Home</a></li>
+				<li class="headerMenuItem"><a class="headerMenuItemClass" href="resume.html">Resume</a></li>
+				<li class="headerMenuItem"><a class="headerMenuItemClass" href="datacenter.html">Data Center</a></li>
+				<li class="headerMenuItem"><a class="headerMenuItemClass" href="http://blog.cdero.com/" target="_blank">Blog</a></li>
+				<li class="headerMenuItem"><a class="headerMenuItemClass" href="https://github.com/compact-disc" target="_blank">GitHub</a></li>
+			</ul>
+		-->
+		</div>
+</header>
+</head>
+<body id="indexBody">
+	<div id="indexMain">
+		<table class="statusTable">
+			<tr>
+				<th>Name</th>
+				<th>Host</th>
+				<th>Operating System</th>
+				<th>Services</th>
+				<th>Description</th>
+			</tr>
+			<tr th:each="data : ${statusTableData}">
+				<td class="statusTableCell" th:utext="${data.name}"></td>
+				<td class="statusTableCell" th:utext="${data.host}"></td>
+				<td class="statusTableCell" th:utext="${data.os}"></td>
+				<td class="statusTableCell" th:utext="${data.services}"></td>
+				<td class="statusTableCell" th:utext="${data.description}"></td>
+			</tr>
+		</table>
+	</div>
+	<br>
+	<br>
+</body>
+<footer>
+	<div class="footer">
+		<div class="footer-content">
+			status.cdero.com
+		</div>
+	</div>
+</footer>
+</html>
