@@ -9,69 +9,112 @@ package com.cdero.status.mvc;
 
 public class StatusTableModel {
 	
-	protected String name;
-	protected String host;
-	protected String os;
-	protected String services;
-	protected String description;
+	public String name;
+	public String host;
+	public String os;
+	public String services;
+	public String description;
+	public String enabled;
+	public boolean status;
+	public String statusString;
 	
-	protected String getName() {
+	public String getName() {
 		
 		return this.name;
 		
 	}
 	
-	protected void setName(String name) {
+	public void setName(String name) {
 		
 		this.name = name;
 		
 	}
 	
-	protected String getHost() {
+	public String getHost() {
 		
 		return this.host;
 		
 	}
 	
-	protected void setHost(String host) {
+	public void setHost(String host) {
 		
 		this.host = host;
 		
 	}
 	
-	protected String getOS() {
+	public String getOS() {
 		
 		return this.os;
 		
 	}
 	
-	protected void setOS(String os) {
+	public void setOS(String os) {
 		
 		
 		this.os = os;
 	}
 	
-	protected String getServices() {
+	public String getServices() {
 		
 		return this.services;
 		
 	}
 	
-	protected void setServices(String services) {
+	public void setServices(String services) {
 		
 		this.services = services;
 		
 	}
 	
-	protected String getDescription() {
+	public String getDescription() {
 		
 		return this.description;
 		
 	}
 	
-	protected void setDescription(String description) {
+	public void setDescription(String description) {
 		
 		this.description = description;
+		
+	}
+	
+	public String getEnabled() {
+		
+		return this.enabled;
+		
+	}
+	
+	public void setEnabled(String enabled) {
+		
+		this.enabled = enabled;
+		
+	}
+	
+	public boolean getStatus() {
+		
+		return this.status;
+		
+	}
+	
+	public void setStatus(boolean status) {
+		
+		if(status) {
+			
+			this.statusString = "<div class=\"status\" style=\"background-color: "+ "#008000" +";\"> " + "Online" + "</div>";
+			
+		}else {
+			
+			this.statusString = "<div class=\"status\" style=\"background-color: "+ "#FF0000" +";\"> " + "Offline" + "</div>";
+			
+		}
+		
+		this.status = status;
+		
+	}
+	
+	public String getStatusString() {
+		
+		return this.statusString;
 		
 	}
 

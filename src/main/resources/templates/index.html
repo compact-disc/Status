@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<meta http-equiv="refresh" content="600"/>
 	<link rel="stylesheet" type="text/css" href="css/index.css">
 	<link rel="stylesheet" type="text/css" href="css/header.css">
 	<link rel="stylesheet" type="text/css" href="css/footer.css">
@@ -8,20 +9,16 @@
 <header id=mainHeader>
 	<div class="headDiv">
 		<h2 id=mainHeaderName>status.cdero.com</h2>
-		<!-- Menu Items, Currently not in use
 			<ul class="menuList">
-				<li class="headerMenuItem"><a class="headerMenuItemClass" href="index.html">Home</a></li>
-				<li class="headerMenuItem"><a class="headerMenuItemClass" href="resume.html">Resume</a></li>
-				<li class="headerMenuItem"><a class="headerMenuItemClass" href="datacenter.html">Data Center</a></li>
-				<li class="headerMenuItem"><a class="headerMenuItemClass" href="http://blog.cdero.com/" target="_blank">Blog</a></li>
-				<li class="headerMenuItem"><a class="headerMenuItemClass" href="https://github.com/compact-disc" target="_blank">GitHub</a></li>
+				<li class="headerMenuItem"><a class="headerMenuItemClass" href="http://cdero.com/">Return to cdero.com</a></li>
 			</ul>
-		-->
 		</div>
 </header>
 </head>
 <body id="indexBody">
 	<div id="indexMain">
+		<br>
+		<br>
 		<table class="statusTable">
 			<tr>
 				<th>Name</th>
@@ -29,6 +26,7 @@
 				<th>Operating System</th>
 				<th>Services</th>
 				<th>Description</th>
+				<th>Status</th>
 			</tr>
 			<tr th:each="data : ${statusTableData}">
 				<td class="statusTableCell" th:utext="${data.name}"></td>
@@ -36,6 +34,7 @@
 				<td class="statusTableCell" th:utext="${data.os}"></td>
 				<td class="statusTableCell" th:utext="${data.services}"></td>
 				<td class="statusTableCell" th:utext="${data.description}"></td>
+				<td class="statusTableCell" th:utext="${data.statusString}"></td>
 			</tr>
 		</table>
 	</div>

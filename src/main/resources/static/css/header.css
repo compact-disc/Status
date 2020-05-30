@@ -55,7 +55,6 @@
 	overflow: hidden;
 }
 
-/* Menu Items, Currently not in use
 .menuList {
 	list-style: none;
   display: flex;
@@ -77,4 +76,3 @@
 .headerMenuItemClass:hover, .headerMenuItemClassProject:hover {
 	color: black;
 }
-*/

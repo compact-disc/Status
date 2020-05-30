@@ -1,15 +1,7 @@
 package com.cdero.status;
 
-/**
- * @author 	Christopher DeRoche
- * @version	0.0.1
- * @since	0.0.1
- * 
- */
-
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -19,9 +11,18 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
+/**
+ * @author 	Christopher DeRoche
+ * @version	0.0.1
+ * @since	0.0.1
+ * 
+ */
+
 @SpringBootApplication
 @EnableScheduling
 public class StatusApplication {
+	
+	private static Properties defaultProperties;
 
 	public static void main(String[] args) {
 		
@@ -76,7 +77,7 @@ public class StatusApplication {
 				
 				String operatingSystem = System.getProperty("os.name");
 				
-				Properties defaultProperties = new Properties();
+				defaultProperties = new Properties();
 				defaultProperties.load(defaultInput);
 				
 				try(OutputStream defaultOutput = new FileOutputStream("./Status/hosts/default.properties")) {
@@ -88,7 +89,7 @@ public class StatusApplication {
 					defaultProperties.setProperty("description", "Runs the status.cdero.com site.");
 					defaultProperties.setProperty("enabled", defaultProperties.getProperty("enabled"));
 					
-					defaultProperties.store(defaultOutput, null);
+					defaultProperties.store(defaultOutput, "Status default server and template for additional machines.");
 					
 				}
 				
@@ -104,7 +105,7 @@ public class StatusApplication {
 				
 				String operatingSystem = System.getProperty("os.name");
 				
-				Properties defaultProperties = new Properties();
+				defaultProperties = new Properties();
 				
 				defaultProperties.setProperty("name", "Default");
 				defaultProperties.setProperty("host", "127.0.0.1");
@@ -113,7 +114,7 @@ public class StatusApplication {
 				defaultProperties.setProperty("description", "Runs the status.cdero.com site.");
 				defaultProperties.setProperty("enabled", "true");
 				
-				defaultProperties.store(defaultOutput, null);
+				defaultProperties.store(defaultOutput, "Status default server and template for additional machines.");
 				
 			} catch (IOException ex) {
 				
@@ -129,6 +130,12 @@ public class StatusApplication {
 		
 		//Start the Spring Boot Application
 		SpringApplication.run(StatusApplication.class, args);
+		
+	}
+	
+	public static Properties getDefaultProperties() {
+		
+		return defaultProperties;
 		
 	}
 
