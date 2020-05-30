@@ -6,8 +6,10 @@ import com.cdero.status.StatusApplication;
 import com.cdero.status.mvc.StatusTableModel;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Properties;
 
@@ -29,8 +31,7 @@ public class PingScheduler {
 		
 		statusTable = new ArrayList<>();
 		
-		this.defaultProperties = StatusApplication.getDefaultProperties();
-		defaultSystem();
+		loadDefaultProperties();
 		checkStatusOfAllMachines();
 		
 	}
@@ -41,7 +42,19 @@ public class PingScheduler {
 		
 	}
 	
-	private void defaultSystem() {
+	private void loadDefaultProperties() {
+		
+		this.defaultProperties = new Properties();
+		
+		try(InputStream defaultInput = new FileInputStream("./Status/hosts/default.properties")) {
+
+			this.defaultProperties.load(defaultInput);
+			
+		} catch (IOException ex) {
+			
+			ex.printStackTrace();
+			
+		} 
 		
 		if(this.defaultProperties.getProperty("enabled").equals("false")) {
 			

@@ -22,7 +22,7 @@ public class Ping {
 			
 			address = InetAddress.getByName(host);
 			
-			if(!address.isReachable(100)) {
+			if(!address.isReachable(1000)) {
 				
 				log.warning("Unable to connect to host " + host);
 				log.close();

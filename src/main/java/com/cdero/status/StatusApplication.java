@@ -21,8 +21,6 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @SpringBootApplication
 @EnableScheduling
 public class StatusApplication {
-	
-	private static Properties defaultProperties;
 
 	public static void main(String[] args) {
 		
@@ -77,7 +75,7 @@ public class StatusApplication {
 				
 				String operatingSystem = System.getProperty("os.name");
 				
-				defaultProperties = new Properties();
+				Properties defaultProperties = new Properties();
 				defaultProperties.load(defaultInput);
 				
 				try(OutputStream defaultOutput = new FileOutputStream("./Status/hosts/default.properties")) {
@@ -105,7 +103,7 @@ public class StatusApplication {
 				
 				String operatingSystem = System.getProperty("os.name");
 				
-				defaultProperties = new Properties();
+				Properties defaultProperties = new Properties();
 				
 				defaultProperties.setProperty("name", "Default");
 				defaultProperties.setProperty("host", "127.0.0.1");
@@ -130,12 +128,6 @@ public class StatusApplication {
 		
 		//Start the Spring Boot Application
 		SpringApplication.run(StatusApplication.class, args);
-		
-	}
-	
-	public static Properties getDefaultProperties() {
-		
-		return defaultProperties;
 		
 	}
 
