@@ -40,6 +40,7 @@ CustomLog ${APACHE_LOG_DIR}/access.log combined
 
 I have the subdomain [status.cdero.com](http://status.cdero.com) pointed to my data center and then Apache takes care of it from there. I try to keep as many ports closed as possible on my network to the public to using the reverse proxy has allowed me to keep port 8080 closed.
 
+I would later like to move this application off site or on a Raspberry Pi that is separate from my production machines to monitor everything. This way if the production web server goes down the status site does not go down with it and services can be accurately be monitored. 
 
 ### TODO
 - Fix ESXi hosts not being pinged when they are live. (Potentially a networking issue or the host itself)
