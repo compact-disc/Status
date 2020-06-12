@@ -33,16 +33,27 @@ ServerName status.cdero.com
 ProxyPass / http://localhost:8080/
 ProxyPassReverse / http://localhost:8080/
 
-ErrorLog ${APACHE_LOG_DIR}/error.log
-CustomLog ${APACHE_LOG_DIR}/access.log combined
+ErrorLog /home/chrisderoche/www/status.cdero.com/log/error.log
+CustomLog /home/chrisderoche/www/status.cdero.com/log/access.log combined
 </VirtualHost>
 ```
 
 I have the subdomain [status.cdero.com](http://status.cdero.com) pointed to my data center and then Apache takes care of it from there. I try to keep as many ports closed as possible on my network to the public to using the reverse proxy has allowed me to keep port 8080 closed.
 
-I would later like to move this application off site or on a Raspberry Pi that is separate from my production machines to monitor everything. This way if the production web server goes down the status site does not go down with it and services can be accurately be monitored. 
+### Configuration Files
+There is a directory created for all the hosts. Each host is another file with whatever name you choose. The default properties file can be used as a template for creating more hosts. Hosts files can be removed or added live when the server is running without having to restart because they are only read when it does a refresh.
 
-### TODO
+Here is a copy of the default configuration file created when the program is first run. It can not be deleted from the program as it will be created again when restarted, but it can be disabled.
+```
+name=Default
+enabled=true
+services=status.cdero.com
+host=127.0.0.1
+description=Runs the status.cdero.com site.
+os=Ubuntu Server
+```
+
+### TODO -- 6/12/2020
 - Fix ESXi hosts not being pinged when they are live. (Potentially a networking issue or the host itself)
 - Fix pfSense not being pinged when live. (Potentially a networking issue or the host itself)
 - Fix Windows 10 not being pinged when live. (Potentially a networking issue or the host itself)
@@ -50,4 +61,7 @@ I would later like to move this application off site or on a Raspberry Pi that i
 - Documentation/Javadoc
 - Notification System
 - Administration menu
-- Anything else?
+- ~~Add default configuration file example~~
+
+### Additional Notes
+I would later like to move this application off site or on a Raspberry Pi that is separate from my production machines to monitor everything. This way if the production web server goes down the status site does not go down with it and services can be accurately be monitored.
