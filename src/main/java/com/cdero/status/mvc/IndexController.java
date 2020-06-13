@@ -9,8 +9,8 @@ import com.cdero.status.ping.PingScheduler;
 
 /**
  * @author 	Christopher DeRoche
- * @version	0.0.1
- * @since	0.0.1
+ * @version	0.2
+ * @since	0.1
  * 
  */
 
@@ -33,8 +33,8 @@ public class IndexController {
 		StatusTableModel testModel = new StatusTableModel();
 		testModel.setName("Default");
 		testModel.setHost("127.0.0.1");
+		testModel.setPort("ICMP");
 		testModel.setOS(operatingSystem);
-		testModel.setServices("status.cdero.com");
 		testModel.setDescription("Application to host status.cdero.com");
 		testModel.setEnabled("true");
 		testModel.setStatus(true);

@@ -7,8 +7,8 @@ import java.util.logging.FileHandler;
 
 /**
  * @author 	Christopher DeRoche
- * @version	0.0.1
- * @since	0.0.1
+ * @version	0.2
+ * @since	0.1
  * 
  */
 
@@ -18,13 +18,13 @@ public class PingLogger {
 	
 	private FileHandler fileHandler;
 	
-	protected PingLogger() {
+	protected PingLogger(String file) {
 		
 		fileHandler = null;
 		
 		try {
 			
-			fileHandler = new FileHandler("./Status/logs/PingLogs.txt", true);
+			fileHandler = new FileHandler("./Status/logs/"+ file +".txt", true);
 			
 			logger.addHandler(fileHandler);
 			

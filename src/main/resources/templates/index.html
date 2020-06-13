@@ -23,18 +23,18 @@
 			<tr>
 				<th>Name</th>
 				<th>Host</th>
+				<th>Port</th>
 				<th>Operating System</th>
-				<th>Services</th>
 				<th>Description</th>
 				<th>Status</th>
 			</tr>
 			<tr th:each="data : ${statusTableData}">
 				<td class="statusTableCell" th:utext="${data.name}"></td>
 				<td class="statusTableCell" th:utext="${data.host}"></td>
+				<td class="statusTableCell" th:utext="${data.port}"></td>
 				<td class="statusTableCell" th:utext="${data.os}"></td>
-				<td class="statusTableCell" th:utext="${data.services}"></td>
 				<td class="statusTableCell" th:utext="${data.description}"></td>
-				<td class="statusTableCell" th:utext="${data.statusString}"></td>
+				<td class="statusTableCell" th:utext="${data.statusDivHTML}"></td>
 			</tr>
 		</table>
 	</div>

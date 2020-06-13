@@ -13,8 +13,8 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 
 /**
  * @author 	Christopher DeRoche
- * @version	0.0.1
- * @since	0.0.1
+ * @version	0.2
+ * @since	0.1
  * 
  */
 
@@ -82,12 +82,13 @@ public class StatusApplication {
 					
 					defaultProperties.setProperty("name", "Default");
 					defaultProperties.setProperty("host", "127.0.0.1");
+					defaultProperties.setProperty("port", "ICMP");
 					defaultProperties.setProperty("os", operatingSystem);
-					defaultProperties.setProperty("services", "status.cdero.com");
 					defaultProperties.setProperty("description", "Runs the status.cdero.com site.");
 					defaultProperties.setProperty("enabled", defaultProperties.getProperty("enabled"));
 					
-					defaultProperties.store(defaultOutput, "Status default server and template for additional machines.");
+					defaultProperties.store(defaultOutput, "Status default server and template for additional machines.\n"
+					+ "If port is left blank ICMP or TCP on port 7 (Echo) will be used.");
 					
 				}
 				
@@ -107,12 +108,13 @@ public class StatusApplication {
 				
 				defaultProperties.setProperty("name", "Default");
 				defaultProperties.setProperty("host", "127.0.0.1");
+				defaultProperties.setProperty("port", "ICMP");
 				defaultProperties.setProperty("os", operatingSystem);
-				defaultProperties.setProperty("services", "status.cdero.com");
 				defaultProperties.setProperty("description", "Runs the status.cdero.com site.");
 				defaultProperties.setProperty("enabled", "true");
 				
-				defaultProperties.store(defaultOutput, "Status default server and template for additional machines.");
+				defaultProperties.store(defaultOutput, "Status default server and template for additional machines.\n"
+				+ "Default port is going to be ICMP unless specified.");
 				
 			} catch (IOException ex) {
 				

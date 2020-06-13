@@ -45,23 +45,28 @@ There is a directory created for all the hosts. Each host is another file with w
 
 Here is a copy of the default configuration file created when the program is first run. It can not be deleted from the program as it will be created again when restarted, but it can be disabled.
 ```
+#Status default server and template for additional machines.
+#If port is left blank ICMP or TCP on port 7 (Echo) will be used.
+#Sat Jun 13 16:41:25 EDT 2020
+port=ICMP
 name=Default
 enabled=true
-services=status.cdero.com
 host=127.0.0.1
 description=Runs the status.cdero.com site.
-os=Ubuntu Server
+os=Windows 10
 ```
 
-### TODO -- 6/12/2020
-- Fix ESXi hosts not being pinged when they are live. (Potentially a networking issue or the host itself)
-- Fix pfSense not being pinged when live. (Potentially a networking issue or the host itself)
-- Fix Windows 10 not being pinged when live. (Potentially a networking issue or the host itself)
+### TODO -- 6/13/2020
+- ~~Fix ESXi hosts not being pinged when they are live. (Potentially a networking issue or the host itself)~~
+- ~~Fix pfSense not being pinged when live. (Potentially a networking issue or the host itself)~~
+- ~~Fix Windows 10 not being pinged when live. (Potentially a networking issue or the host itself)~~
 - ~~Better readme~~
 - Documentation/Javadoc
 - Notification System
 - Administration menu
+- Make it look pretty
 - ~~Add default configuration file example~~
+- ~~Add ping by port to check actual services instead of virtual machines~~
 
 ### Additional Notes
 I would later like to move this application off site or on a Raspberry Pi that is separate from my production machines to monitor everything. This way if the production web server goes down the status site does not go down with it and services can be accurately be monitored.

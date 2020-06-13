@@ -15,8 +15,8 @@ import java.util.Properties;
 
 /**
  * @author 	Christopher DeRoche
- * @version	0.0.1
- * @since	0.0.1
+ * @version	0.2
+ * @since	0.1
  * 
  */
 
@@ -66,10 +66,12 @@ public class PingScheduler {
 			defaultStatus.setName(this.defaultProperties.getProperty("name"));
 			defaultStatus.setHost(this.defaultProperties.getProperty("host"));
 			defaultStatus.setOS(this.defaultProperties.getProperty("os"));
-			defaultStatus.setServices(this.defaultProperties.getProperty("services"));
+			defaultStatus.setPort(this.defaultProperties.getProperty("port"));
 			defaultStatus.setDescription(this.defaultProperties.getProperty("description"));
 			defaultStatus.setEnabled(this.defaultProperties.getProperty("enabled"));
 			defaultStatus.setStatus(Ping.pingHost(this.defaultProperties.getProperty("host")));
+			
+			defaultStatus.setPort("ICMP");
 			
 			statusTable.add(defaultStatus);
 			
@@ -110,10 +112,21 @@ public class PingScheduler {
 					statusModel.setName(hostProperties.getProperty("name"));
 					statusModel.setHost(hostProperties.getProperty("host"));
 					statusModel.setOS(hostProperties.getProperty("os"));
-					statusModel.setServices(hostProperties.getProperty("services"));
+					statusModel.setPort(hostProperties.getProperty("port"));
 					statusModel.setDescription(hostProperties.getProperty("description"));
 					statusModel.setEnabled(hostProperties.getProperty("enabled"));
-					statusModel.setStatus(Ping.pingHost(hostProperties.getProperty("host")));
+					
+					if(statusModel.getPort().isEmpty() || statusModel.getPort().equalsIgnoreCase("icmp")) {
+						
+						statusModel.setStatus(Ping.pingHost(statusModel.getHost()));
+						statusModel.setPort("ICMP");
+						
+					}else {
+						
+						statusModel.setStatus(PingSocket.pingSocket(statusModel.getHost(), Integer.parseInt(statusModel.getPort())));
+						
+					}
+					
 					
 					statusTable.add(statusModel);
 					

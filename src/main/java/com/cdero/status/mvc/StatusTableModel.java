@@ -2,8 +2,8 @@ package com.cdero.status.mvc;
 
 /**
  * @author 	Christopher DeRoche
- * @version	0.0.1
- * @since	0.0.1
+ * @version	0.2
+ * @since	0.1
  * 
  */
 
@@ -12,11 +12,11 @@ public class StatusTableModel {
 	public String name;
 	public String host;
 	public String os;
-	public String services;
 	public String description;
 	public String enabled;
 	public boolean status;
-	public String statusString;
+	public String statusDivHTML;
+	public String port;
 	
 	public String getName() {
 		
@@ -54,18 +54,6 @@ public class StatusTableModel {
 		this.os = os;
 	}
 	
-	public String getServices() {
-		
-		return this.services;
-		
-	}
-	
-	public void setServices(String services) {
-		
-		this.services = services;
-		
-	}
-	
 	public String getDescription() {
 		
 		return this.description;
@@ -100,11 +88,11 @@ public class StatusTableModel {
 		
 		if(status) {
 			
-			this.statusString = "<div class=\"status\" style=\"background-color: "+ "#008000" +";\"> " + "Online" + "</div>";
+			this.statusDivHTML = "<div class=\"status\" style=\"background-color: "+ "#008000" +";\"> " + "Online" + "</div>";
 			
 		}else {
 			
-			this.statusString = "<div class=\"status\" style=\"background-color: "+ "#FF0000" +";\"> " + "Offline" + "</div>";
+			this.statusDivHTML = "<div class=\"status\" style=\"background-color: "+ "#FF0000" +";\"> " + "Offline" + "</div>";
 			
 		}
 		
@@ -114,7 +102,19 @@ public class StatusTableModel {
 	
 	public String getStatusString() {
 		
-		return this.statusString;
+		return this.statusDivHTML;
+		
+	}
+	
+	public void setPort(String port) {
+		
+		this.port = port;
+		
+	}
+	
+	public String getPort() {
+		
+		return this.port;
 		
 	}
 

@@ -5,16 +5,18 @@ import java.net.*;
 
 /**
  * @author 	Christopher DeRoche
- * @version	0.0.1
- * @since	0.0.1
+ * @version	0.2
+ * @since	0.1
  * 
  */
 
 public class Ping {
 	
+	private final static int TIMEOUT = 1000;
+	
 	public static boolean pingHost(String host) {
 		
-		PingLogger log = new PingLogger();
+		PingLogger log = new PingLogger(Ping.class.getSimpleName());
 		
 		InetAddress address = null;
 		
@@ -22,18 +24,18 @@ public class Ping {
 			
 			address = InetAddress.getByName(host);
 			
-			if(!address.isReachable(1000)) {
+			if(!address.isReachable(TIMEOUT)) {
 				
-				log.warning("Unable to connect to host " + host);
+				log.warning("Connection timed out when trying to connect to host " + host);
 				log.close();
 				
 				return false;
 				
 			}
 			
-		} catch (IOException ex) {
+		} catch (IOException ioException) {
 			
-			log.severe("IOException when trying to connect to host " + host);
+			log.severe("Error when trying to connect to host " + host);
 			log.close();
 			
 			return false;
