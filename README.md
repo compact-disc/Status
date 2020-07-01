@@ -56,15 +56,18 @@ description=Runs the status.cdero.com site.
 os=Windows 10
 ```
 
-### TODO -- 6/13/2020
+### Known Issues -- 6/20/2020
+- Terraria Server showing offline after users play and leave
 - ~~Fix ESXi hosts not being pinged when they are live. (Potentially a networking issue or the host itself)~~
 - ~~Fix pfSense not being pinged when live. (Potentially a networking issue or the host itself)~~
 - ~~Fix Windows 10 not being pinged when live. (Potentially a networking issue or the host itself)~~
-- ~~Better readme~~
+
+### TODO -- 6/20/2020
 - Documentation/Javadoc
 - Notification System
 - Administration menu
 - Make it look pretty
+- ~~Better readme~~
 - ~~Add default configuration file example~~
 - ~~Add ping by port to check actual services instead of virtual machines~~
 
