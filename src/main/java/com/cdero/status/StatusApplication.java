@@ -11,9 +11,11 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
+import com.cdero.status.ping.PingLogger;
+
 /**
  * @author 	Christopher DeRoche
- * @version	0.2
+ * @version	0.3
  * @since	0.1
  * 
  */
@@ -23,6 +25,9 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 public class StatusApplication {
 
 	public static void main(String[] args) {
+		
+		// Initialize the logger for the application
+		PingLogger.initializeLogger();
 		
 		/*
 		 * Start Directory Checking
@@ -130,6 +135,17 @@ public class StatusApplication {
 		
 		//Start the Spring Boot Application
 		SpringApplication.run(StatusApplication.class, args);
+		
+		// Add a shut down hook to handle closing operations
+		Runtime.getRuntime().addShutdownHook(new Thread() {
+			
+			public void run() {
+				
+				PingLogger.close();
+				
+			}
+			
+		});
 		
 	}
 

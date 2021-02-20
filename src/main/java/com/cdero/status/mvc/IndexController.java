@@ -9,7 +9,7 @@ import com.cdero.status.ping.PingScheduler;
 
 /**
  * @author 	Christopher DeRoche
- * @version	0.2
+ * @version	0.3
  * @since	0.1
  * 
  */
@@ -25,6 +25,7 @@ public class IndexController {
 		
 	}
 	
+	@SuppressWarnings("unused")
 	private ArrayList<StatusTableModel> testTable() {
 		
 		ArrayList<StatusTableModel> testTable = new ArrayList<>();

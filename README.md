@@ -11,6 +11,7 @@ Live version located at [status.cdero.com](http://status.cdero.com/)
 - Add and remove hosts from the folder without restarting the application
 - Runs using a Tomcat server
 - Can be reached using a reverse proxy on Apache
+- Check ICMP or TCP Connections (UDP potentially later)
 
 ### Setup
 I have the server running as a standalone Tomcat server on my web server. So I just start the Spring Boot application normally. The Gradle file is already setup to compile a jar that can be run standalone. The directories and files will automatically be generated when the application is first run, and if they are deleted it will create them again. They are placed in the root directory with the jar file.
@@ -56,17 +57,20 @@ description=Runs the status.cdero.com site.
 os=Windows 10
 ```
 
-### Known Issues -- 6/30/2020
+### Known Issues -- 2/20/2020
 - ~~Terraria Server showing offline after users play and leave~~
 - ~~Fix ESXi hosts not being pinged when they are live. (Potentially a networking issue or the host itself)~~
 - ~~Fix pfSense not being pinged when live. (Potentially a networking issue or the host itself)~~
 - ~~Fix Windows 10 not being pinged when live. (Potentially a networking issue or the host itself)~~
+- Unable to implement UDP Port Scanning
 
-### TODO -- 6/20/2020
+### TODO -- 2/20/2021
 - Documentation/Javadoc
 - Notification System
 - Administration menu
 - Make it look pretty
+- Add UDP Port scanning for Game Server status and other UDP based applications.
+- ~~Clean up logging~~
 - ~~Better readme~~
 - ~~Add default configuration file example~~
 - ~~Add ping by port to check actual services instead of virtual machines~~

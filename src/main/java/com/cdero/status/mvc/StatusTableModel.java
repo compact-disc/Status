@@ -2,7 +2,7 @@ package com.cdero.status.mvc;
 
 /**
  * @author 	Christopher DeRoche
- * @version	0.2
+ * @version	0.3
  * @since	0.1
  * 
  */
@@ -88,11 +88,11 @@ public class StatusTableModel {
 		
 		if(status) {
 			
-			this.statusDivHTML = "<div class=\"status\" style=\"background-color: "+ "#008000" +";\"> " + "Online" + "</div>";
+			this.statusDivHTML = "<div class=\"status\" style=\"background-color: "+ "#008000" +";\"> " + "<br>Online" + "</div>";
 			
 		}else {
 			
-			this.statusDivHTML = "<div class=\"status\" style=\"background-color: "+ "#FF0000" +";\"> " + "Offline" + "</div>";
+			this.statusDivHTML = "<div class=\"status\" style=\"background-color: "+ "#FF0000" +";\"> " + "<br>Offline" + "</div>";
 			
 		}
 		

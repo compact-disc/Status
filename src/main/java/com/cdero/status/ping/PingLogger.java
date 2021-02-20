@@ -7,7 +7,7 @@ import java.util.logging.FileHandler;
 
 /**
  * @author 	Christopher DeRoche
- * @version	0.2
+ * @version	0.3
  * @since	0.1
  * 
  */
@@ -16,15 +16,15 @@ public class PingLogger {
 	
 	private static final Logger logger = Logger.getLogger(PingLogger.class.getName());
 	
-	private FileHandler fileHandler;
+	private static FileHandler fileHandler;
 	
-	protected PingLogger(String file) {
+	public static void initializeLogger() {
 		
 		fileHandler = null;
 		
 		try {
 			
-			fileHandler = new FileHandler("./Status/logs/"+ file +".txt", true);
+			fileHandler = new FileHandler("./Status/logs/StatusLogs.txt", true);
 			
 			logger.addHandler(fileHandler);
 			
@@ -40,25 +40,25 @@ public class PingLogger {
 		
 	}
 	
-	protected void warning(String warning) {
+	public static void warning(String warning) {
 		
-		logger.warning(warning + "\n");
-		
-	}
-	
-	protected void info(String info) {
-		
-		logger.info(info + "\n");
+		logger.warning(warning);
 		
 	}
 	
-	protected void severe(String severe) {
+	public static void info(String info) {
 		
-		logger.severe(severe + "\n");
+		logger.info(info);
 		
 	}
 	
-	protected void close() {
+	public static void severe(String severe) {
+		
+		logger.severe(severe);
+		
+	}
+	
+	public static void close() {
 		
 		fileHandler.close();
 		

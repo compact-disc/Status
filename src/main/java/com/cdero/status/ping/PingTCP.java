@@ -5,18 +5,16 @@ import java.net.*;
 
 /**
  * @author 	Christopher DeRoche
- * @version	0.2
+ * @version	0.3
  * @since	0.2
  * 
  */
 
-public class PingSocket {
+public class PingTCP {
 	
 	private final static int TIMEOUT = 1000;
 	
-	public static boolean pingSocket(String host, int port) {
-		
-		PingLogger log = new PingLogger(PingSocket.class.getSimpleName());
+	public static boolean ping(String host, int port) {
 		
 		try (Socket socket = new Socket()){
 			
@@ -25,22 +23,19 @@ public class PingSocket {
 		
 		}catch (SocketTimeoutException timeoutException) {
 			
-			log.warning("Connection timed out when trying to connect to host " + host + " on port " + port);
-			log.close();
+			PingLogger.warning("Connection timed out when trying to connect to host " + host + " on port " + port);
 			
 			return false;
 			
 		}catch (IOException ioException) {
 			
-			log.severe("Error when trying to connect to host " + host + " on port " + port);
-			log.close();
+			PingLogger.warning("Error when trying to connect to host " + host + " on port " + port);
 			
 			return false;
 			
 		}
-		
-		log.info("Successfully connected to host " + host + " on port " + port);
-		log.close();
+			
+		PingLogger.info("Successfully connected to host " + host + " on port " + port);
 		
 		return true;
 		

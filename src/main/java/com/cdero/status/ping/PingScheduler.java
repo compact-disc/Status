@@ -2,20 +2,17 @@ package com.cdero.status.ping;
 
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
-import com.cdero.status.StatusApplication;
 import com.cdero.status.mvc.StatusTableModel;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Properties;
 
 /**
  * @author 	Christopher DeRoche
- * @version	0.2
+ * @version	0.3
  * @since	0.1
  * 
  */
@@ -69,7 +66,7 @@ public class PingScheduler {
 			defaultStatus.setPort(this.defaultProperties.getProperty("port"));
 			defaultStatus.setDescription(this.defaultProperties.getProperty("description"));
 			defaultStatus.setEnabled(this.defaultProperties.getProperty("enabled"));
-			defaultStatus.setStatus(Ping.pingHost(this.defaultProperties.getProperty("host")));
+			defaultStatus.setStatus(PingICMP.ping(this.defaultProperties.getProperty("host")));
 			
 			defaultStatus.setPort("ICMP");
 			
@@ -118,12 +115,12 @@ public class PingScheduler {
 					
 					if(statusModel.getPort().isEmpty() || statusModel.getPort().equalsIgnoreCase("icmp")) {
 						
-						statusModel.setStatus(Ping.pingHost(statusModel.getHost()));
+						statusModel.setStatus(PingICMP.ping(statusModel.getHost()));
 						statusModel.setPort("ICMP");
 						
 					}else {
-						
-						statusModel.setStatus(PingSocket.pingSocket(statusModel.getHost(), Integer.parseInt(statusModel.getPort())));
+							
+						statusModel.setStatus(PingTCP.ping(statusModel.getHost(), Integer.parseInt(statusModel.getPort())));
 						
 					}
 					
