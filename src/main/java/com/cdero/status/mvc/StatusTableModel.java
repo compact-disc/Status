@@ -88,11 +88,11 @@ public class StatusTableModel {
 		
 		if(status) {
 			
-			this.statusDivHTML = "<div class=\"status\" style=\"background-color: "+ "#008000" +";\"> " + "<br>Online" + "</div>";
+			this.statusDivHTML = "<div class=\"status\" style=\"background-color: "+ "#008000" +";\"><br class=\"statusBr\">" + "Online" + "</div>";
 			
 		}else {
 			
-			this.statusDivHTML = "<div class=\"status\" style=\"background-color: "+ "#FF0000" +";\"> " + "<br>Offline" + "</div>";
+			this.statusDivHTML = "<div class=\"status\" style=\"background-color: "+ "#FF0000" +";\"><br class=\"statusBr\">" + "Offline" + "</div>";
 			
 		}
 		
